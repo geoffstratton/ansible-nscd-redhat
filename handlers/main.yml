@@ -1,0 +1,14 @@
+---
+- name: restart nscd
+  become: true
+  service:
+    name: nscd
+    state: restarted
+    enabled: yes
+
+- name: start nscd
+  become: true
+  service:
+    name: nscd
+    state: started
+    enabled: yes

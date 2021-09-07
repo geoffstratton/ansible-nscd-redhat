@@ -1,0 +1,62 @@
+#
+# {{ ansible_managed }}
+#
+
+logfile			{{ nscd_logfile }}
+threads			{{ nscd_threads }}
+max-threads		{{ nscd_max_threads }}
+server-user		{{ nscd_server_user }}
+stat-user		{{ nscd_stat_user }}
+debug-level		{{ nscd_debug_level }}
+reload-count		{{ nscd_reload_count }}
+paranoia		{{ nscd_paranoia }}
+restart-interval	{{ nscd_restart_interval }}
+
+enable-cache		passwd		{{ passwd_enable_cache }}
+positive-time-to-live	passwd		{{ passwd_positive_time_to_live }}
+negative-time-to-live	passwd		{{ passwd_negative_time_to_live }}
+suggested-size		passwd		{{ passwd_suggested_size }}
+check-files		passwd		{{ passwd_check_files }}
+persistent		passwd		{{ passwd_persistent }}
+shared			passwd		{{ passwd_shared }}
+max-db-size		passwd		{{ passwd_max_db_size }}
+auto-propagate		passwd		{{ passwd_auto_propagate }}
+
+enable-cache		group		{{ group_enable_cache }}
+positive-time-to-live	group		{{ group_positive_time_to_live }}
+negative-time-to-live	group		{{ group_negative_time_to_live }}
+suggested-size		group		{{ group_suggested_size }}
+check-files		group		{{ group_check_files }}
+persistent		group		{{ group_persistent }}
+shared			group		{{ group_shared }}
+max-db-size		group		{{ group_max_db_size }}
+auto-propagate		group		{{ group_auto_propagate }}
+
+enable-cache		hosts		{{ hosts_enable_cache }}
+positive-time-to-live	hosts		{{ hosts_positive_time_to_live }}
+negative-time-to-live	hosts		{{ hosts_negative_time_to_live }}
+suggested-size		hosts		{{ hosts_suggested_size }}
+check-files		hosts		{{ hosts_check_files }}
+persistent		hosts		{{ hosts_persistent }}
+shared			hosts		{{ hosts_shared }}
+max-db-size		hosts		{{ hosts_max_db_size }}
+
+{% if ansible_distribution_major_version != "5" %}
+enable-cache		services	{{ services_enable_cache }}
+positive-time-to-live	services	{{ services_positive_time_to_live }}
+negative-time-to-live	services	{{ services_negative_time_to_live }}
+suggested-size		services	{{ services_suggested_size }}
+check-files		services	{{ services_check_files }}
+persistent		services	{{ services_persistent }}
+shared			services	{{ services_shared }}
+max-db-size		services	{{ services_max_db_size }}
+
+enable-cache		netgroup	{{ netgroup_enable_cache }}
+positive-time-to-live	netgroup	{{ netgroup_positive_time_to_live }}
+negative-time-to-live	netgroup	{{ netgroup_negative_time_to_live }}
+suggested-size		netgroup	{{ netgroup_suggested_size }}
+check-files		netgroup	{{ netgroup_check_files }}
+persistent		netgroup	{{ netgroup_persistent }}
+shared			netgroup	{{ netgroup_shared }}
+max-db-size		netgroup	{{ netgroup_max_db_size }}
+{% endif %}

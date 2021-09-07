@@ -1,0 +1,25 @@
+---
+- name: Install nscd
+  yum:
+    name: nscd
+    state: present
+  notify:
+    start nscd
+
+- name: Configure nscd.conf
+  template:
+    src: nscd_config.j2
+    dest: /etc/nscd.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify:
+    restart nscd
+  tags:
+    - daily
+
+- name: Enable nscd and start on boot
+  service:
+    enabled: yes
+    name: nscd
+    state: started
