@@ -5,6 +5,8 @@
     state: present
   notify:
     start nscd
+  tags:
+    - nscd
 
 - name: Configure nscd.conf
   template:
@@ -16,10 +18,12 @@
   notify:
     restart nscd
   tags:
-    - daily
+    - nscd
 
 - name: Enable nscd and start on boot
   service:
     enabled: yes
     name: nscd
     state: started
+  tags:
+    - nscd
